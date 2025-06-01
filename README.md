@@ -95,16 +95,18 @@ holbertonschool-hbnb/
 
 # THE DIAGRAMS 
 
-package_diagram.png
+    -- package_diagram.png
+    ![Alt text](chemin/vers/ton_image.png)
     
-
     ── class_diagram.png
+![Alt text](.png)
 
     ── user_registration.png
+![Alt text](.png)
 
     ── place_creation.png
-
+![Alt text](.png)
     ── add_review.png
-
+![Alt text](.png)
     ── fetch_places.png 
-
+![Alt text](.png)
