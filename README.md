@@ -99,7 +99,7 @@ holbertonschool-hbnb/
  ![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/9c3e42e44d08b2343d4ff63bea08c31ac1e94543/package_diagram%20.png)
     
     ── class_diagram.png
-![Alt text](.png)
+![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/024020f0aeb23c88b5fb4789b2813ca1be67a28b/class%20diagram.png.png)
 
     ── user_registration.png
 ![Alt text](.png)
