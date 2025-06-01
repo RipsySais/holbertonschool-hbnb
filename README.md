@@ -105,7 +105,7 @@ holbertonschool-hbnb/
 ![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/6ad5b984f1d5ee247360894f4efd27f764aefae4/%3Auser_registration.png)
 
     ── place_creation.png
-![Alt text](.png)
+![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/ea887054ed7fcbd2c159862f32fcc47fa9af2440/place%20cration.png)
     ── add_review.png
 ![Alt text](.png)
     ── fetch_places.png 
