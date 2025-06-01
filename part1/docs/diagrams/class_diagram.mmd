@@ -1,0 +1,31 @@
+classDiagram
+    class User {
+        +id: str
+        +email: str
+        +is_admin: bool
+        +created_at: datetime
+        +updated_at: datetime
+        +create_place()
+    }
+
+    class Place {
+        +id: str
+        +title: str
+        +price: float
+        +add_amenity()
+    }
+
+    class Review {
+        +id: str
+        +rating: int
+        +comment: str
+    }
+
+    class Amenity {
+        +id: str
+        +name: str
+    }
+
+    User "1" --> "n" Place : owns
+    Place "1" --> "n" Review : has
+    Place "n" --> "n" Amenity : includes

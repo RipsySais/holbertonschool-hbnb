@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant Client
+    participant API
+    participant Facade
+    participant PlaceService
+    participant ORM
+
+    Client->>API: POST /places {title, price, owner_id}
+    API->>Facade: createPlace(data)
+    Facade->>PlaceService: verifyOwnerExists(owner_id)
+    PlaceService->>ORM: query(User, owner_id)
+    ORM-->>PlaceService: User object
+    PlaceService->>PlaceService: validatePrice(price)
+    PlaceService->>ORM: save(new_place)
+    ORM-->>PlaceService: Place object
+    PlaceService-->>Facade: success
+    Facade-->>API: HTTP 200 OK
+    API-->>Client: Place details

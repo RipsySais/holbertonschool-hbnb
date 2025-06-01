@@ -1,0 +1,24 @@
+classDiagram
+    namespace Presentation {
+        class APIControllers
+        class Routes
+        class Facade
+    }
+
+    namespace BusinessLogic {
+        class User
+        class Place
+        class Review
+        class Amenity
+        class Validators
+    }
+
+    namespace Persistence {
+        class ORM
+        class Database
+    }
+
+    APIControllers --> Facade : Uses
+    Facade --> BusinessLogic : Delegates operations
+    BusinessLogic --> ORM : Persists data
+    ORM --> Database : Executes queries

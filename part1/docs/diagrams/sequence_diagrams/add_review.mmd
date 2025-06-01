@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant Client
+    participant API
+    participant Facade
+    participant ReviewService
+    participant ORM
+
+    Client->>API: POST /reviews {rating, comment, place_id, user_id}
+    API->>Facade: addReview(data)
+    Facade->>ReviewService: validateReview(data)
+    ReviewService->>ORM: save(new_review)
+    ORM-->>ReviewService: Review object
+    ReviewService-->>Facade: success
+    Facade-->>API: HTTP 201 Created
+    API-->>Client: Review details
