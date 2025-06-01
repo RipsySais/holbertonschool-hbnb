@@ -96,7 +96,7 @@ holbertonschool-hbnb/
 # THE DIAGRAMS 
 
     -- package_diagram.png
-    ![Alt text](chemin/vers/ton_image.png)
+    ![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/6a0f760f6a0180aef16d4f2ba130d097e3828066/package_diagram%20.png)
     
     ── class_diagram.png
 ![Alt text](.png)
