@@ -115,3 +115,8 @@ holbertonschool-hbnb/
 
 
 ![Texte alternatif](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/ab3d382106cab5da9ab1b42141f6c4f16e3d0355/diagrame.png)
+
+
+-- diagram de sequence task 02
+
+![Texte alternatif]()
