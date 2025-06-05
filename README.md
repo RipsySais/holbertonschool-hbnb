@@ -1,97 +1,45 @@
-HBnB Evolution – Technical Documentation (Part 1)
-📚 Project Overview
-HBnB Evolution is a simplified AirBnB-like application.
-This documentation presents the main architecture, core entities, and key workflows using UML diagrams.
+# HBnB Evolution - Documentation Technique
 
-🏗️ Architecture
-The project uses a three-layer architecture:
+## Architecture Globale
+![Diagramme des Packages](API-Architecture.mmd)
 
-Presentation Layer (APIs, user interaction)
+### Couche Présentation
+- **Responsabilités** : 
+  - Gestion des routes API (Flask)
+  - Sérialisation/Désérialisation JSON
+  - Gestion des codes HTTP
+- **Composants** :
+  - `api/places.py` : Endpoints pour les lieux
+  - `serializers.py` : Conversion objets ↔ JSON
 
-Business Logic Layer (models, services)
+### Couche Métier
+- **Responsabilités** :
+  - Validation des données métier
+  - Implémentation des règles de gestion
+  - Gestion des relations entre entités
+- **Composants** :
+  - `models/place.py` : Modèle Place avec méthodes métier
+  - `services/place_service.py` : Logique de création des lieux
 
-Persistence Layer (database access)
+### Couche Persistence
+- **Responsabilités** :
+  - Abstraction de la base de données
+  - Implémentation du CRUD
+  - Gestion des transactions
+- **Composants** :
+  - `repositories/place_repository.py` : Accès DB pour les lieux
+  - `database.py` : Configuration SQLAlchemy
 
-![Package Diagram](./images/package_diagram Entities
+---
 
-User: Registers, updates profile, can be admin or regular user
+## Modèle de Domaine
+![Diagramme de Classes](Classe-UML.md)
 
-Place: Listed by a user, with details and amenities
-
-Review: User feedback on a place
-
-Amenity: Features available at a place
-
-![Class Diagram](./images/class_diagram.pngflows
-
-User Registration
-![User Registration](./images/user_registration**
-![Place Creation](./images/place_creation**
-![Add Review](./images/add_review.png**
-![Fetch Places](./images/fetch_places.png View Diagrams
-All diagrams are in docs/images/.
-Edit or regenerate with the Mermaid source files in docs/diagrams/.
+### Entité Place
 
 
 
- #📁 HBNB  Project Structure
 
-holbertonschool-hbnb/
-├── part1/                        # 📖 Technical documentation & UML diagrams (Part 1)
-│   └── docs/
-│       ├── diagrams/
-│       │   ├── package_diagram.mmd
-│       │   ├── class_diagram.mmd
-│       │   └── sequence_diagrams/
-│       │       ├── user_registration.mmd
-│       │       ├── place_creation.mmd
-│       │       ├── add_review.mmd
-│       │       └── fetch_places.mmd
-│       ├── images/
-│       │   ├── package_diagram.png
-│       │   ├── class_diagram.png
-│       │   ├── user_registration.png
-│       │   ├── place_creation.png
-│       │   ├── add_review.png
-│       │   └── fetch_places.png
-│       └── technical_guide.md
-│
-├── models/                       # 🏗️ Python classes for core entities (User, Place, Review, Amenity, etc.)
-│   ├── __init__.py
-│   ├── user.py
-│   ├── place.py
-│   ├── review.py
-│   ├── amenity.py
-│   └── base_model.py
-│
-├── api/                          # 🌐 API code (e.g., Flask app, endpoints)
-│   ├── __init__.py
-│   ├── app.py
-│   └── routes/
-│       ├── users.py
-│       ├── places.py
-│       ├── reviews.py
-│       └── amenities.py
-│
-├── persistence/                  # 💾 Database setup, ORM, and data access
-│   ├── __init__.py
-│   ├── db.py
-│   └── orm.py
-│
-├── web_static/                   # 🎨 HTML/CSS/JS for the web interface (optional)
-│   ├── index.html
-│   └── styles.css
-│
-├── tests/                        # 🧪 Unit and integration tests
-│   ├── __init__.py
-│   ├── test_user.py
-│   ├── test_place.py
-│   ├── test_review.py
-│   └── test_amenity.py
-│
-├── requirements.txt              # 📦 Python dependencies
-├── README.md                     # 📝 Project overview and instructions
-└── .gitignore                    # 🚫 Files/folders to ignore in git
 
 # THE DIAGRAMS 
 
@@ -104,12 +52,8 @@ holbertonschool-hbnb/
     ── user_registration.png
 ![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/6ad5b984f1d5ee247360894f4efd27f764aefae4/%3Auser_registration.png)
 
-    ── place_creation.png
-![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/ea887054ed7fcbd2c159862f32fcc47fa9af2440/place%20cration.png)
-    ── add_review.png
-![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/f21305148fe2d05d8900d0e30569b38e81e4859c/review.png)
-    ── fetch_places.png 
-![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/4051f2e7607d32468a3830153c1e2dcec80418d4/fetch_places.png)
+── place_creation.png
+![Alt text]()
 
   --diagram task 01
 
