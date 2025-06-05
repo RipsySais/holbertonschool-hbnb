@@ -34,64 +34,6 @@ Edit or regenerate with the Mermaid source files in docs/diagrams/.
 
 
 
- #📁 HBNB  Project Structure
-
-holbertonschool-hbnb/
-├── part1/                        # 📖 Technical documentation & UML diagrams (Part 1)
-│   └── docs/
-│       ├── diagrams/
-│       │   ├── package_diagram.mmd
-│       │   ├── class_diagram.mmd
-│       │   └── sequence_diagrams/
-│       │       ├── user_registration.mmd
-│       │       ├── place_creation.mmd
-│       │       ├── add_review.mmd
-│       │       └── fetch_places.mmd
-│       ├── images/
-│       │   ├── package_diagram.png
-│       │   ├── class_diagram.png
-│       │   ├── user_registration.png
-│       │   ├── place_creation.png
-│       │   ├── add_review.png
-│       │   └── fetch_places.png
-│       └── technical_guide.md
-│
-├── models/                       # 🏗️ Python classes for core entities (User, Place, Review, Amenity, etc.)
-│   ├── __init__.py
-│   ├── user.py
-│   ├── place.py
-│   ├── review.py
-│   ├── amenity.py
-│   └── base_model.py
-│
-├── api/                          # 🌐 API code (e.g., Flask app, endpoints)
-│   ├── __init__.py
-│   ├── app.py
-│   └── routes/
-│       ├── users.py
-│       ├── places.py
-│       ├── reviews.py
-│       └── amenities.py
-│
-├── persistence/                  # 💾 Database setup, ORM, and data access
-│   ├── __init__.py
-│   ├── db.py
-│   └── orm.py
-│
-├── web_static/                   # 🎨 HTML/CSS/JS for the web interface (optional)
-│   ├── index.html
-│   └── styles.css
-│
-├── tests/                        # 🧪 Unit and integration tests
-│   ├── __init__.py
-│   ├── test_user.py
-│   ├── test_place.py
-│   ├── test_review.py
-│   └── test_amenity.py
-│
-├── requirements.txt              # 📦 Python dependencies
-├── README.md                     # 📝 Project overview and instructions
-└── .gitignore                    # 🚫 Files/folders to ignore in git
 
 # THE DIAGRAMS 
 
