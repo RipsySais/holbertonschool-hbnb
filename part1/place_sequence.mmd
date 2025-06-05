@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant Client as Navigateur/Postman
+    participant API as API (Flask)
+    participant Business as Couche Métier
+    participant DB as Base de Données
+
+    Client->>API: POST /places (JSON: titre, description, prix...)
+    API->>Business: validate_place_data(data)
+    Business->>DB: get_user(owner_id)
+    DB-->>Business: User object
+    Business->>Business: create_place(data, owner)
+    Business->>DB: save_place(new_place)
+    DB-->>Business: Place saved
+    Business-->>API: PlaceDTO serialisé
+    API-->>Client: 201 Created + JSON
