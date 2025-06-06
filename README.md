@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HBnB Evolution - Documentation Technique
 
 ## Architecture Globale
@@ -40,27 +41,53 @@
 
 
 
+=======
+##HBnB Evolution – Technical Documentation (PART 1)
+This repository contains the technical documentation for the architecture and design of the HBnB Evolution application, a project inspired by AirBnB.
+The goal of this first phase is to provide a clear and detailed overview of the system prior to development, including:
+
+A high-level architecture diagram illustrating the separation into three main layers (Presentation, Business Logic, Persistence) and their interactions via the Facade pattern.
+
+A detailed UML class diagram describing the core entities (User, Place, Review, Amenity), their attributes, methods, and relationships.
+
+Sequence diagrams to illustrate the primary API workflows (e.g., user registration, place creation, review submission).
+
+Explanatory notes for each diagram to facilitate understanding and guide future implementation.
+
+This documentation serves as a reference for the entire team, ensures project consistency, and guides the next development steps.
+
+
+
+>>>>>>> origin/main
 
 # THE DIAGRAMS 
 
     -- package_diagram.png
- ![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/9c3e42e44d08b2343d4ff63bea08c31ac1e94543/package_diagram%20.png)
+ ![Alt text]()
     
     ── class_diagram.png
-![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/024020f0aeb23c88b5fb4789b2813ca1be67a28b/class%20diagram.png)
+![Alt text]()
 
     ── user_registration.png
-![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/6ad5b984f1d5ee247360894f4efd27f764aefae4/%3Auser_registration.png)
+![Alt text]()
 
+<<<<<<< HEAD
 ── place_creation.png
+=======
+    ── place_creation.png
+![Alt text]()
+    ── add_review.png
+![Alt text]()
+    ── fetch_places.png 
+>>>>>>> origin/main
 ![Alt text]()
 
   --diagram task 01
+![Texte alternatif](w)
 
-
-![Texte alternatif](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/ab3d382106cab5da9ab1b42141f6c4f16e3d0355/diagrame.png)
+![Texte alternatif]()
 
 
 -- diagram de sequence task 02
 
-![Texte alternatif](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/56eca113374202294a0f57d675bae1c20d44c731/Diagram_de_sequence.png)
+![Texte alternatif]()
