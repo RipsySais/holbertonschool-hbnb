@@ -90,4 +90,8 @@ This documentation serves as a reference for the entire team, ensures project co
 
 -- diagram de sequence task 02
 
-![Texte alternatif]()
+![Texte alternatif]("\\wsl.localhost\Ubuntu-22.04\home\georges\holbertonschool-hbnb-1\UserRegistrationDiagram.png")
+![Texte alternatif]("\\wsl.localhost\Ubuntu-22.04\home\georges\holbertonschool-hbnb-1\PlaceCreationDiagram.png")
+![Texte alternatif]("\\wsl.localhost\Ubuntu-22.04\home\georges\holbertonschool-hbnb-1\ListofPlacesDiagram.png")
+![Texte alternatif]("\\wsl.localhost\Ubuntu-22.04\home\georges\holbertonschool-hbnb-1\ReviewSubmissionDiagram.png")
+
