@@ -54,7 +54,7 @@ Edit or regenerate with the Mermaid source files in docs/diagrams/.
 ![Alt text](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/4051f2e7607d32468a3830153c1e2dcec80418d4/fetch_places.png)
 
   --diagram task 01
-![Texte alternatif]()
+![Texte alternatif](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/73dbb9b923d49aad497634575c12ff341ae9ee61/Capture%20d%E2%80%99e%CC%81cran%202025-06-05%20a%CC%80%2013.30.50.png)
 
 ![Texte alternatif](https://github.com/MOUSSA-info/holbertonschool-hbnb/blob/ab3d382106cab5da9ab1b42141f6c4f16e3d0355/diagrame.png)
 
