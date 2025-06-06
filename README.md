@@ -93,5 +93,5 @@ This documentation serves as a reference for the entire team, ensures project co
 ![Texte alternatif](images/UserRegistrationDiagram.png)
 ![Texte alternatif](images/PlaceCreationDiagram.png)
 ![Texte alternatif](images/ReviewSubmissionDiagram.png)
-![Texte alternatif](images/UserRegistrationDiagram.png)
+![Texte alternatif](images/ListofPlacesDiagram.png)
 
