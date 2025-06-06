@@ -91,7 +91,7 @@ This documentation serves as a reference for the entire team, ensures project co
 -- diagram de sequence task 02
 
 ![Texte alternatif](images/UserRegistrationDiagram.png)
-![Texte alternatif](home\georges\holbertonschool-hbnb-1\PlaceCreationDiagram.png)
-![Texte alternatif](home\georges\holbertonschool-hbnb-1\ListofPlacesDiagram.png)
-![Texte alternatif](home\georges\holbertonschool-hbnb-1\ReviewSubmissionDiagram.png)
+![Texte alternatif](images/PlaceCreationDiagram.png)
+![Texte alternatif](images/ReviewSubmissionDiagram.png)
+![Texte alternatif](images/UserRegistrationDiagram.png)
 
