@@ -62,34 +62,6 @@ This documentation serves as a reference for the entire team, ensures project co
 
 # THE DIAGRAMS 
 
-    -- package_diagram.png
- ![Alt text]()
-    
-    ── class_diagram.png
-![Alt text]()
-
-    ── user_registration.png
-![Alt text]()
-
-<<<<<<< HEAD
-── place_creation.png
-=======
-    ── place_creation.png
-![Alt text]()
-    ── add_review.png
-![Alt text]()
-    ── fetch_places.png 
->>>>>>> origin/main
-![Alt text]()
-
-  --diagram task 01
-![Texte alternatif](w)
-
-![Texte alternatif]()
-
-
--- diagram de sequence task 02
-
 ![Texte alternatif](images/UserRegistrationDiagram.png)
 ![Texte alternatif](images/PlaceCreationDiagram.png)
 ![Texte alternatif](images/ReviewSubmissionDiagram.png)
