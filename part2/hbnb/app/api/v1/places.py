@@ -1,11 +1,10 @@
-from flask_restx import Namespace, Resource
+from flask_restx import Resource
+from app.api.v1 import places_namespace
 
-
-places_ns = Namespace('places', description='Place operations')
-
-
-@places_ns.route('/')
-class Places(Resource):
+@places_namespace.route('/')
+class PlaceList(Resource):
     def get(self):
-        return {'message': 'List of places'}
+        return {"message": "Liste des lieux"}
 
+    def post(self):
+        return {"message": "Créer un nouvel endroit"}, 201

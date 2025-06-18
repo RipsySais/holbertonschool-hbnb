@@ -7,12 +7,12 @@ class HBnBFacade:
         self.review_repo = InMemoryRepository()
         self.amenity_repo = InMemoryRepository()
 
-    # Placeholder method for creating a user
+    # Méthode d'espace réservé pour créer un utilisateur
     def create_user(self, user_data):
-        # Logic will be implemented in later tasks
+        # La logique sera implémentée dans les tâches suivantes
         pass
 
-    # Placeholder method for fetching a place by ID
+    # Méthode d'espace réservé pour récupérer un endroit par ID
     def get_place(self, place_id):
-        # Logic will be implemented in later tasks
+        # La logique sera implémentée dans les tâches suivantes
         pass
