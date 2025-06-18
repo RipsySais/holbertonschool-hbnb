@@ -1,13 +1,18 @@
-from flask_restx import Namespace
+from flask import Blueprint
+from flask_restx import Api
+from app.api.v1.users import api as users_ns
 
-users_namespace = Namespace('users', description='Opérations liées aux utilisateurs')
-places_namespace = Namespace('places', description='Opérations liées aux lieux')
-reviews_namespace = Namespace('reviews', description='Opérations liées aux avis')
-amenities_namespace = Namespace('amenities', description='Opérations liées aux commodités')
+# Création du Blueprint
+blueprint = Blueprint('api', __name__, url_prefix='/api/v1')
 
-# Exemple d'enregistrement d'un espace de noms
-def register_api(api):
-    api.add_namespace(users_namespace)
-    api.add_namespace(places_namespace)
-    api.add_namespace(reviews_namespace)
-    api.add_namespace(amenities_namespace)
+# Initialisation de l'API Flask-RESTx
+api = Api(
+    blueprint,
+    title="HBnB API",
+    version="1.0",
+    description="Documentation de l'API HBnB",
+    doc="/"  # Swagger UI sera accessible à /api/v1/
+)
+
+# Ajout des namespaces
+api.add_namespace(users_ns, path='/users')
