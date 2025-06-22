@@ -1,50 +1,40 @@
-from flask import Flask
-from flask_restx import Api
-from app.api.v1.users import api as users_ns
-from app.api.v1.amenities import api as amenities_ns
-from app.api.v1.places import api as places_ns
-from app.api.v1.reviews import api as reviews_ns
-from app.models.base_model import BaseModel
-from flask_cors import CORS
-import logging
+import unittest
+from app import create_app
 
-def create_app():
-    """Factory function to create the Flask application"""
-    app = Flask(__name__)
+class TestAmenityAPI(unittest.TestCase):
 
-    # Configuration de l'application
-    app.config.from_mapping(
-        SECRET_KEY='your_secret_key',  # A remplacer par une valeur sécurisée
-        DEBUG=True,  # Ne pas utiliser en production
-        # Ajoutez d'autres configurations ici
-    )
+    def setUp(self):
+        self.app = create_app()
+        self.client = self.app.test_client()
 
-    # Configuration du logger
-    handler = logging.FileHandler('app.log')  # Log dans un fichier
-    handler.setLevel(logging.INFO)
-    app.logger.addHandler(handler)
+    def test_create_amenity(self):
+        response = self.client.post('/api/v1/amenities/', json={
+            "name": "WiFi"
+        })
+        self.assertEqual(response.status_code, 201)
+        self.assertIn("name", response.get_json())
+        self.assertEqual(response.get_json()["name"], "WiFi")
 
-    # Activer CORS si besoin
-    CORS(app)
+    def test_get_all_amenities(self):
+        # Crée d'abord une amenity pour s'assurer qu'on a au moins une entrée
+        self.client.post('/api/v1/amenities/', json={"name": "Pool"})
 
-    # Création de l'API avec la route pour Swagger
-    api = Api(
-        app,
-        version='1.0',
-        title='HBnB API',
-        description='HBnB Application API',
-    )
+        response = self.client.get('/api/v1/amenities/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIsInstance(response.get_json(), list)
+        self.assertGreaterEqual(len(response.get_json()), 1)
 
-    # Enregistrement des namespaces (routes) pour les différentes parties de l'API
-    api.add_namespace(users_ns, path='/api/v1/users')
-    api.add_namespace(amenities_ns, path='/api/v1/amenities')
-    api.add_namespace(places_ns, path='/api/v1/places')
-    api.add_namespace(reviews_ns, path='/api/v1/reviews')
+    def test_get_nonexistent_amenity(self):
+        response = self.client.get('/api/v1/amenities/nonexistent-id')
+        self.assertEqual(response.status_code, 404)
 
-    # Gestion des erreurs globales
-    @app.errorhandler(Exception)
-    def handle_error(e):
-        app.logger.error(f'Une erreur est survenue : {e}')
-        return {"message": "Une erreur interne est survenue."}, 500
+    def test_update_amenity(self):
+        post_response = self.client.post('/api/v1/amenities/', json={"name": "Gym"})
+        amenity_id = post_response.get_json().get("id")
 
-    return app
+        put_response = self.client.put(f'/api/v1/amenities/{amenity_id}', json={"name": "Updated Gym"})
+        self.assertEqual(put_response.status_code, 200)
+        self.assertEqual(put_response.get_json()["name"], "Updated Gym")
+
+if __name__ == '__main__':
+    unittest.main()

@@ -1,18 +1,17 @@
-from flask import Blueprint
 from flask_restx import Api
-from app.api.v1.users import api as users_ns
+from flask import Blueprint
 
-# Création du Blueprint
-blueprint = Blueprint('api', __name__, url_prefix='/api/v1')
+from .users import api as users_ns
+from .places import api as places_ns
+from .reviews import api as reviews_ns
+from .amenities import api as amenities_ns
 
-# Initialisation de l'API Flask-RESTx
-api = Api(
-    blueprint,
-    title="HBnB API",
-    version="1.0",
-    description="Documentation de l'API HBnB",
-    doc="/"  # Swagger UI sera accessible à /api/v1/
-)
+bp_v1 = Blueprint('api_v1', __name__, url_prefix='/api/v1')
 
-# Ajout des namespaces
-api.add_namespace(users_ns, path='/users')
+api = Api(bp_v1, version='1.0', title='HBNB API',
+          description='API for HBNB project')
+
+api.add_namespace(users_ns)
+api.add_namespace(places_ns)
+api.add_namespace(reviews_ns)
+api.add_namespace(amenities_ns)

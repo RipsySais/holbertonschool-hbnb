@@ -43,4 +43,4 @@ class TestReview(unittest.TestCase):
         """Test un avis avec un utilisateur invalide."""
         with self.assertRaises(ValueError) as context:
             Review(text="Nice place", rating=4, place=self.place, user="Invalid User")
-        self.assertEqual(str(context.exception), "L'utilisateur doit être
+        self.assertEqual(str(context.exception), "L'utilisateur doit être une instance de User")
