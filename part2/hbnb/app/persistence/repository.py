@@ -1,5 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional, TypeVar
+from app.models.user import User
+from app.models.place import Place
+from app.models.review import Review
+from app.models.amenity import Amenity
 
 T = TypeVar('T')  # Type générique pour les objets
 
@@ -63,3 +67,19 @@ class InMemoryRepository(Repository):
 
     def get_by_attribute(self, attr_name: str, attr_value: Any) -> Optional[T]:
         return next((obj for obj in self._storage.values() if getattr(obj, attr_name) == attr_value), None)
+
+
+class UserRepository(InMemoryRepository):
+    pass
+
+
+class PlaceRepository(InMemoryRepository):
+    pass
+
+
+class ReviewRepository(InMemoryRepository):
+    pass
+
+
+class AmenityRepository(InMemoryRepository):
+    pass

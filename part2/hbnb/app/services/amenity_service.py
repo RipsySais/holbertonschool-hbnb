@@ -1,10 +1,10 @@
 from app.models.amenity import Amenity
-from app.repositories.in_memory_repository import InMemoryRepository
+from app.persistence.repository import AmenityRepository
 
 
 class AmenityService:
     def __init__(self):
-        self.repository = InMemoryRepository()
+        self.repository = AmenityRepository()
 
     def create_amenity(self, data):
         name = data.get("name")

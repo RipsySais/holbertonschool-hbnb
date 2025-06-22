@@ -4,7 +4,7 @@ from app.services.review_service import ReviewService
 from app.services.amenity_service import AmenityService
 
 
-class Facade:
+class HBnBFacade:
     def __init__(self):
         self.user_service = UserService()
         self.place_service = PlaceService()

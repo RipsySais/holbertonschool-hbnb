@@ -1,12 +1,12 @@
 from app.models.review import Review
-from app.persistence.repository import InMemoryRepository
+from app.persistence.repository import ReviewRepository
 from app.services.user_service import UserService
 from app.services.place_service import PlaceService
 
 
 class ReviewService:
     def __init__(self):
-        self.repository = InMemoryRepository()
+        self.repository = ReviewRepository()
         self.user_service = UserService()
         self.place_service = PlaceService()
 

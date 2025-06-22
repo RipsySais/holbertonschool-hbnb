@@ -1,11 +1,11 @@
 from app.models.place import Place
-from app.repositories.in_memory_repository import InMemoryRepository
+from app.persistence.repository import PlaceRepository
 from app.services.user_service import UserService
 
 
 class PlaceService:
     def __init__(self):
-        self.repository = InMemoryRepository()
+        self.repository = PlaceRepository()
         self.user_service = UserService()
 
     def create_place(self, data):
