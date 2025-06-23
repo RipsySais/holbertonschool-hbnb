@@ -1,4 +1,5 @@
-#HBnB Project
+#HBnB Project - part2
+
 #Description
 
 HBnB est une application web de gestion d’hébergements permettant la création, la consultation, la modification et la suppression d’utilisateurs, de lieux, d’avis et d’équipements. Ce projet met l’accent sur une architecture modulaire, la séparation des couches de présentation et de logique métier, et l’implémentation d’API RESTful avec Flask et flask-restx.
@@ -67,7 +68,7 @@ part2/hbnb
 ├── requirements.txt
 └── run.py
 
-# Fonctionnalités implémentées
+#Fonctionnalités implémentées
 Gestion des utilisateurs : Création, consultation, modification, suppression.
 
 Gestion des lieux : Ajout, consultation, modification, suppression, avec affichage du propriétaire et des équipements associés.
@@ -86,6 +87,22 @@ Pattern façade : Simplification de la communication entre la couche présentati
 Tests : Utilisation de Postman ou cURL pour tester les endpoints.
 
 #Modularité : Séparation claire des responsabilités pour faciliter l’intégration future de l’authentification et du contrôle d’accès.
+#Facade
+Le fichier facade.py contient une classe HBnBFacade qui centralise les appels aux services métier.
+python
+Copier
+Modifier
+facade = HBnBFacade()
+facade.create_place(data)
+facade.get_all_amenities()
+#🛠️ Services disponibles
+Chaque entité (User, Place, Review, Amenity) a un service dédié avec une API REST connectée.
+
+Ressource	Routes (RESTx)	Fonctions appelées
+User	/users/	create_user, get_user, update_user, get_all_users
+Place	/places/	create_place, get_place, update_place, get_all_places
+Review	/reviews/	create_review, get_review, update_review, get_all_reviews
+Amenity	/amenities/	create_amenity, get_amenity, update_amenity, get_all_amenities
 
 #Prérequis
 Python 3.8+
@@ -94,9 +111,14 @@ Python 3.8+
 
 flask-restx
 flask-cors
-# AUTHOR
+
+#Le lien de l'application
+- http://127.0.0.1:5000/api/v1/
+#les installatios 
+- pip install -r requirements.txt
+- Si tu as une erreur ModuleNotFoundError: No module named 'flask_cors', installe : pip install flask flask-restx flask-cors
+
+#AUTHOR
 # Mahamat Abdalllah Moussa
- 
 # Ahmed Cisse
- 
 # Georges Menheim
