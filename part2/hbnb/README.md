@@ -119,6 +119,6 @@ flask-cors
 - Si tu as une erreur ModuleNotFoundError: No module named 'flask_cors', installe : pip install flask flask-restx flask-cors
 
 #AUTHOR
-# Mahamat Abdalllah Moussa
-# Ahmed Cisse
-# Georges Menheim
+# Mahamat Abdalllah Moussa.: https://github.com/MOUSSA-info
+# Ahmed Cisse.: https://github.com/RipsySais
+# Georges Menhei.: https://github.com/georges479m
