@@ -12,9 +12,11 @@ class PlaceService:
         user_id = data.get('user_id')
         name = data.get('name')
         description = data.get('description')
-        city = data.get('city')
+        longitude = data.get('longitude')
+        latitude = data.get('latitude')
+        amenities = data.get('amenities')
 
-        if not user_id or not name or not city:
+        if not user_id or not name or not longitude or not latitude:
             raise ValueError("Missing required place fields")
 
         # Vérifie que l'utilisateur existe
@@ -25,7 +27,8 @@ class PlaceService:
             user_id=user_id,
             name=name,
             description=description,
-            city=city,
+            longitude=longitude,
+            latitude=latitude,
             amenities=amenities
         )
         self.repository.add(new_place)

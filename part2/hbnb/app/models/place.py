@@ -6,7 +6,8 @@ class Place(BaseModel):
         super().__init__()
         self.user_id = user_id
         self.name = name
-        self.city = city
+        self.longitude = 0.0
+        self.latitude = 0.0
         self.description = description
         self.amenities: List[str] = []
 
