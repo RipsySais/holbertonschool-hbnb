@@ -1,4 +1,3 @@
-# facade.py
 from models import db
 from models.user import User
 from models.place import Place
@@ -110,7 +109,3 @@ class SQLFacade:
             setattr(amenity, key, value)
         db.session.commit()
         return amenity
-
-
-# Instance globale
-facade = SQLFacade()
