@@ -1,7 +1,9 @@
 from flask_restx import Namespace, Resource, fields
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.services.facade import HBnBFacade
+from facade import facade
 
-facade = HBnBFacade()
+
 api = Namespace('places', description='Place operations')
 
 place_model = api.model('Place', {
@@ -16,7 +18,14 @@ place_model = api.model('Place', {
 @api.route('/')
 class PlaceList(Resource):
     @api.expect(place_model, validate=True)
+    @jwt_required()
     def post(self):
+        current_user_id = get_jwt_identity()
+
+        # Interdire la création de place pour un autre utilisateur
+        if api.payload.get('owner_id') != current_user_id:
+            return {'error': 'You can only create places for yourself'}, 403
+
         try:
             p = facade.create_place(api.payload)
             return {
@@ -51,7 +60,19 @@ class PlaceResource(Resource):
         }, 200
 
     @api.expect(place_model, validate=True)
+    @jwt_required()
     def put(self, place_id):
+        current_user_id = get_jwt_identity()
+
+        try:
+            place = facade.get_place(place_id)
+        except ValueError:
+            return {'error': 'Place not found'}, 404
+
+        # Vérifie si l'utilisateur est bien le propriétaire
+        if place.owner.id != current_user_id:
+            return {'error': 'Unauthorized to update this place'}, 403
+
         try:
             p = facade.update_place(place_id, api.payload)
             return {
@@ -59,5 +80,24 @@ class PlaceResource(Resource):
                 'price': p.price, 'address': p.address,
                 'owner_id': p.owner.id, 'amenities': p.amenities
             }, 200
+        except ValueError as e:
+            return {'error': str(e)}, 400
+
+    @jwt_required()
+    def delete(self, place_id):
+        current_user_id = get_jwt_identity()
+
+        try:
+            place = facade.get_place(place_id)
+        except ValueError:
+            return {'error': 'Place not found'}, 404
+
+        # Vérifie si l'utilisateur est bien le propriétaire
+        if place.owner.id != current_user_id:
+            return {'error': 'Unauthorized to delete this place'}, 403
+
+        try:
+            facade.delete_place(place_id)
+            return {'message': 'Place deleted'}, 200
         except ValueError as e:
             return {'error': str(e)}, 400

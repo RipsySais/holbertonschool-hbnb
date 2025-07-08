@@ -1,66 +1,116 @@
-from app.services.user_service import UserService
-from app.services.place_service import PlaceService
-from app.services.review_service import ReviewService
-from app.services.amenity_service import AmenityService
+# facade.py
+from models import db
+from models.user import User
+from models.place import Place
+from models.review import Review
+from models.amenity import Amenity
+from werkzeug.security import generate_password_hash, check_password_hash
 
+class SQLFacade:
+    # --- Users ---
+    def add_user(self, user_data):
+        user_data['password_hash'] = generate_password_hash(user_data.pop('password'))
+        user = User(**user_data)
+        db.session.add(user)
+        db.session.commit()
+        return user
 
-class HBnBFacade:
-    def __init__(self):
-        self.user_service = UserService()
-        self.place_service = PlaceService()
-        self.review_service = ReviewService()
-        self.amenity_service = AmenityService()
-
-    def create_user(self, data):
-        return self.user_service.create_user(data)
+    def get_user_by_email(self, email):
+        return User.query.filter_by(email=email).first()
 
     def get_user(self, user_id):
-        return self.user_service.get_user(user_id)
+        return User.query.get(user_id)
 
     def get_all_users(self):
-        return self.user_service.get_all_users()
+        return User.query.all()
 
     def update_user(self, user_id, data):
-        return self.user_service.update_user(user_id, data)
+        user = User.query.get(user_id)
+        if not user:
+            return None
+        for key, value in data.items():
+            if key == 'password':
+                value = generate_password_hash(value)
+                key = 'password_hash'
+            setattr(user, key, value)
+        db.session.commit()
+        return user
 
+    def verify_password(self, user, password):
+        return check_password_hash(user.password_hash, password) if user else False
+
+    # --- Places ---
     def create_place(self, data):
-        return self.place_service.create_place(data)
+        place = Place(**data)
+        db.session.add(place)
+        db.session.commit()
+        return place
 
     def get_place(self, place_id):
-        return self.place_service.get_place(place_id)
+        return Place.query.get(place_id)
 
     def get_all_places(self):
-        return self.place_service.get_all_places()
+        return Place.query.all()
 
     def update_place(self, place_id, data):
-        return self.place_service.update_place(place_id, data)
+        place = Place.query.get(place_id)
+        if not place:
+            return None
+        for key, value in data.items():
+            setattr(place, key, value)
+        db.session.commit()
+        return place
 
+    # --- Reviews ---
     def create_review(self, data):
-        return self.review_service.create_review(data)
+        review = Review(**data)
+        db.session.add(review)
+        db.session.commit()
+        return review
 
     def get_review(self, review_id):
-        return self.review_service.get_review(review_id)
+        return Review.query.get(review_id)
 
     def get_all_reviews(self):
-        return self.review_service.get_all_reviews()
+        return Review.query.all()
 
     def update_review(self, review_id, data):
-        return self.review_service.update_review(review_id, data)
-    
+        review = Review.query.get(review_id)
+        if not review:
+            return None
+        for key, value in data.items():
+            setattr(review, key, value)
+        db.session.commit()
+        return review
+
+    def get_reviews_by_user(self, user_id):
+        return Review.query.filter_by(user_id=user_id).all()
+
+    def has_reviewed(self, user_id, place_id):
+        return Review.query.filter_by(user_id=user_id, place_id=place_id).first() is not None
+
+    # --- Amenities ---
     def create_amenity(self, data):
-        return self.amenity_service.create_amenity(data)
+        amenity = Amenity(**data)
+        db.session.add(amenity)
+        db.session.commit()
+        return amenity
 
     def get_amenity(self, amenity_id):
-        return self.amenity_service.get_amenity(amenity_id)
+        return Amenity.query.get(amenity_id)
 
     def get_all_amenities(self):
-        return self.amenity_service.get_all_amenities()
+        return Amenity.query.all()
 
     def update_amenity(self, amenity_id, data):
-        return self.amenity_service.update_amenity(amenity_id, data)
-    
-    def get_user_by_email(self, email):
-        return self.user_service.get_user_by_email(email)
-    
-    def verify_password(self, user, password):
-        return user.verify_password(password) if user else False
+        amenity = Amenity.query.get(amenity_id)
+        if not amenity:
+            return None
+        for key, value in data.items():
+            setattr(amenity, key, value)
+        db.session.commit()
+        return amenity
+
+
+# Instance globale
+facade = SQLFacade()

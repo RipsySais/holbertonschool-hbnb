@@ -1,8 +1,9 @@
 from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import create_access_token
-from app.services import facade
+from facade import facade
 
 api = Namespace('auth', description='Authentication operations')
+
 
 login_model = api.model('Login', {
     'email': fields.String(required=True, description='User email'),
@@ -11,7 +12,7 @@ login_model = api.model('Login', {
 
 @api.route('/login')
 class Login(Resource):
-    @api.expect(login_model)
+    @api.expect(login_model, validate=True)
     def post(self):
         """Authenticate user and return a JWT token"""
         credentials = api.payload
@@ -22,8 +23,7 @@ class Login(Resource):
             return {'error': 'Invalid credentials'}, 401
 
         access_token = create_access_token(
-            identity={'id': str(user.id), 'is_admin': user.is_admin}
+            identity={'id': str(user.id), 'is_admin': getattr(user, 'is_admin', False)}
         )
 
         return {'access_token': access_token}, 200
-
