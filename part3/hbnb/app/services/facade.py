@@ -1,14 +1,28 @@
-from models import db
+from app import db
 from models.user import User
 from models.place import Place
 from models.review import Review
 from models.amenity import Amenity
 from werkzeug.security import generate_password_hash, check_password_hash
+from app.persistence.repository import SQLAlchemyRepository
+
+
+class HBNBFacade:
+    def __init__ (self):
+        self.user_repo = SQLAlchemyRepository(User)
+
+    def create_user(self, user_data):
+        user = User(**user_data)
+        self.user_repo.add(user)
+        return user
+    
+    def get_user(self, user_id):
+        return self.user_repo.get(user_id)
 
 class SQLFacade:
     # --- Users ---
     def add_user(self, user_data):
-        user_data['password_hash'] = generate_password_hash(user_data.pop('password'))
+        user_data['password'] = generate_password_hash(user_data.pop('password'))
         user = User(**user_data)
         db.session.add(user)
         db.session.commit()

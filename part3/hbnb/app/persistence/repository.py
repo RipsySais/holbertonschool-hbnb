@@ -83,3 +83,28 @@ class ReviewRepository(InMemoryRepository):
 
 class AmenityRepository(InMemoryRepository):
     pass
+
+
+class SQLAlchemyRepository:
+    def __init__(self, model):
+        self.model = model
+
+    def add(self, entity):
+        from app import db
+        db.session.add(entity)
+        db.session.commit()
+        return entity
+    
+    def get(self, entity_id):
+        return self.model.query.get(entity_id)
+    
+    def get_all(self):
+        return self.model.query.all()
+    
+    def delete(self, entity):
+        from app import db
+        db.session.delete(entity)
+        db.session.commit()
+    
+    def gat_by_attribute(self, attr_name, attr_value):
+        return self.model.query.filter_by(**{attr_name: attr_value}).first()

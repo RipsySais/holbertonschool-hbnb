@@ -1,12 +1,7 @@
 from flask import Flask
 from app.api.v1 import v1_blueprint
 from flask_cors import CORS
-from app.models import db
-from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager
-
-jwt = JWTManager()  # Initialize JWT Manager
-bcrypt = Bcrypt()  # Initialize Bcrypt for password hashing
+from app.extensions import db, jwt, bcrypt
 
 def create_app(config_class="config.DevelopmentConfig"):
     app = Flask(__name__)
