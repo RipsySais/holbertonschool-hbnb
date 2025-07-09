@@ -1,23 +1,29 @@
 from app.models.base_model import BaseModel
-from typing import List
+from app.extensions import db
 
 class Place(BaseModel):
-    def __init__(self, user_id: str, name: str, description: str = ""):
+    __tablename__ = 'places'
+
+    title = db.Column(db.String(128), nullable=False)
+    description = db.Column(db.String(512), nullable=True)
+    price = db.Column(db.Float, nullable=False, default=0.0)
+    latitude = db.Column(db.Float, nullable=True)
+    longitude = db.Column(db.Float, nullable=True)
+
+    def __init__(self, title, description="", price=0.0, latitude=None, longitude=None):
         super().__init__()
-        self.user_id = user_id
-        self.name = name
-        self.longitude = 0.0
-        self.latitude = 0.0
+        self.title = title
         self.description = description
-        self.amenities: List[str] = []
+        self.price = price
+        self.latitude = latitude
+        self.longitude = longitude
 
     def to_dict(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
-            'name': self.name,
-            'longitude': self.longitude,
-            'latitude': self.latitude,
+            'title': self.title,
             'description': self.description,
-            'amenities': self.amenities
+            'price': self.price,
+            'latitude': self.latitude,
+            'longitude': self.longitude
         }

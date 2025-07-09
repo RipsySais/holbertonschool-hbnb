@@ -1,16 +1,20 @@
 from app.models.base_model import BaseModel
+from app.extensions import db
 
 class Review(BaseModel):
-    def __init__(self, user_id: str, place_id: str, text: str):
+    __tablename__ = 'reviews'
+
+    text = db.Column(db.String(512), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, text, rating):
         super().__init__()
-        self.user_id = user_id
-        self.place_id = place_id
         self.text = text
+        self.rating = rating
 
     def to_dict(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
-            'place_id': self.place_id,
-            'text': self.text
+            'text': self.text,
+            'rating': self.rating
         }
