@@ -1,4 +1,4 @@
-#HBnB Project - part2
+#HBnB Project - part3
 
 #Description
 
@@ -117,7 +117,8 @@ flask-cors
 #les installatios 
 - pip install -r requirements.txt
 - Si tu as une erreur ModuleNotFoundError: No module named 'flask_cors', installe : pip install flask flask-restx flask-cors
-
+# le diagramme ER
+![Texte alternatif](
 #AUTHOR
 # Mahamat Abdalllah Moussa.: https://github.com/MOUSSA-info
 # Ahmed Cisse.: https://github.com/RipsySais
