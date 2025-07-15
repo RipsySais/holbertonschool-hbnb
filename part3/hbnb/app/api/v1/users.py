@@ -1,8 +1,6 @@
 from flask_restx import Namespace, Resource, fields
-from app.services.facade import HBnBFacade
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
-from app.api.v1.users import users_namespace
-from facade import facade
+from app.services.facade  import facade
 
 
 users_api = Namespace('users', description='User operations')

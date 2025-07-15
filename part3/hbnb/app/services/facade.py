@@ -1,8 +1,8 @@
-from app import db
-from models.user import User
-from models.place import Place
-from models.review import Review
-from models.amenity import Amenity
+from app.extensions import db
+from app.models import User
+from app.models import Place
+from app.models import Review
+from app.models import Amenity
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.persistence.repository import SQLAlchemyRepository
 
@@ -19,7 +19,7 @@ class HBNBFacade:
     def get_user(self, user_id):
         return self.user_repo.get(user_id)
 
-class SQLFacade:
+class SQLFacade(HBNBFacade):
     # --- Users ---
     def add_user(self, user_data):
         user_data['password'] = generate_password_hash(user_data.pop('password'))
@@ -123,3 +123,5 @@ class SQLFacade:
             setattr(amenity, key, value)
         db.session.commit()
         return amenity
+
+facade = SQLFacade()
