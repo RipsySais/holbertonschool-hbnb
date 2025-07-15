@@ -118,7 +118,8 @@ flask-cors
 - pip install -r requirements.txt
 - Si tu as une erreur ModuleNotFoundError: No module named 'flask_cors', installe : pip install flask flask-restx flask-cors
 # le diagramme ER
-![Texte alternatif](
+![Texte alternatif](diagram.Hbnb p3-1.jpeg)
+
 #AUTHOR
 # Mahamat Abdalllah Moussa.: https://github.com/MOUSSA-info
 # Ahmed Cisse.: https://github.com/RipsySais
