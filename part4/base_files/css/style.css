@@ -49,6 +49,13 @@ header {
     height: 40px;
 }
 
+.icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: center;
+}
+
 nav ul {
     display: flex;
     list-style: none;
