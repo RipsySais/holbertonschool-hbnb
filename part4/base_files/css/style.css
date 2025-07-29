@@ -49,13 +49,16 @@ header {
     height: 40px;
 }
 
-.icon {
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
+.hero-banner {
+    background-image: url('../images/img_index.png');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: 8px;
+    margin: 1rem auto;
+    max-width: 960px;
 }
+
 
 nav ul {
     display: flex;
