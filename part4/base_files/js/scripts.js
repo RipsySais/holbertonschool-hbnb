@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const protectedPages = ['add_review.html'];
     const currentPage = window.location.pathname.split('/').pop();
     
-    if (protectedPages.includes(currentPage) {
+    if (protectedPages.includes(currentPage)) {
         const isAuthenticated = await checkAuth();
         if (!isAuthenticated) {
             window.location.href = 'login.html';
