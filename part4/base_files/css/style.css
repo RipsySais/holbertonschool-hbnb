@@ -101,6 +101,33 @@ nav a:hover {
     flex: 1;
 }
 
+.filters {
+  display: flex;
+  justify-content: space-between; /* ou `center` ou `start` selon ton besoin */
+  align-items: flex-start;
+  gap: 20px; /* espace entre les blocs */
+}
+
+.locations,
+.amenities {
+  display: flex;
+  flex-direction: column;
+  width: 200px; /* ajuste selon ta mise en page */
+}
+
+.popover {
+  display: none; /* ou `block` si tu veux les voir directement */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popover li h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+
 /* Places Listing */
 .places {
     margin-top: 30px;
