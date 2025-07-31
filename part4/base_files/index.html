@@ -1,99 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBNB - Places</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>HBNB - Trouvez des hébergements</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/modern-style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo of HBNB">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="login.html" id="login-link" class="login-button">Login</a></li>
-                <li><a href="#" id="logout-link" style="display: none;">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-        <section class="filters">
-            <div class="locations">
-                <h3>States</h3>
-                <h4>California, Arizona...</h4>
-                <ul class="popover">
-                    <li>
-                        <h2>Arizona:</h2>
-                        <ul>
-                            <li>Phoenix</li>
-                            <li>Tucson</li>
-                        </ul>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="images/logo.png" alt="HBNB" height="40" class="me-2">
+                <span class="fw-bold text-primary">HBNB</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-house-door me-1"></i>Accueil</a>
                     </li>
-                    <li>
-                        <h2>California:</h2>
-                        <ul>
-                            <li>San Francisco</li>
-                            <li>Los Altos</li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-search me-1"></i>Explorer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-heart me-1"></i>Favoris</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary rounded-pill px-4" href="login.html">
+                            <i class="bi bi-person-circle me-1"></i>Connexion
+                        </a>
                     </li>
                 </ul>
             </div>
-            <div class="amenities">
-                <h3>Amenities</h3>
-                <h4>Internet, Kitchen...</h4>
-                <ul class="popover">
-                    <li>Internet</li>
-                    <li>TV</li>
-                    <li>Kitchen</li>
-                    <li>Iron</li>
-                </ul>
-            </div>
-            <button id="search-btn">Search</button>
-        </section>
-
-       <section class="places">
-    <div class="hero-image">
-        <div class="hero-text">
-            <h1>Available Places</h1>
-            <label for="max-price"><strong>Max Price:</strong></label>
-            <select id="max-price">
-                <option value="all">All</option>
-                <option value="100">$100</option>
-                <option value="150">$150</option>
-                <option value="200">$200</option>
-            </select>
         </div>
-    </div>
+    </nav>
 
-    <div id="places-list" class="places-container">
-        <article class="place-card">
-            <h2>Beautiful Beach House</h2>
-            <p>Price per night: $150</p>
-            <button class="details-button">View Details</button>
-        </article>
-        <article class="place-card">
-            <h2>Cozy Cabin</h2>
-            <p>Price per night: $100</p>
-            <button class="details-button">View Details</button>
-        </article>
-        <article class="place-card">
-            <h2>Modern Apartment</h2>
-            <p>Price per night: $200</p>
-            <button class="details-button">View Details</button>
-        </article>
-    </div>
-</section>
+    <!-- Hero Section -->
+    <section class="hero-section vh-100 d-flex align-items-center position-relative overflow-hidden">
+        <!-- Background Video/Image -->
+        <div class="hero-background position-absolute w-100 h-100">
+            <div class="kitchen-showcase"></div>
+        </div>
+        
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content bg-white bg-opacity-95 backdrop-blur p-5 rounded-4 shadow-lg">
+                        <h1 class="display-4 fw-bold text-dark mb-3">
+                            Trouvez des hébergements <span class="text-primary">extraordinaires</span>
+                        </h1>
+                        <p class="lead text-muted mb-4">
+                            Découvrez des logements uniques et des expériences inoubliables partout dans le monde.
+                        </p>
+                        
+                        <!-- Search Form -->
+                        <form class="search-form">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="address" placeholder="Où allez-vous ?">
+                                        <label for="address"><i class="bi bi-geo-alt me-2"></i>Destination</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="arrival">
+                                        <label for="arrival"><i class="bi bi-calendar-check me-2"></i>Arrivée</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="departure">
+                                        <label for="departure"><i class="bi bi-calendar-x me-2"></i>Départ</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="adults">
+                                            <option value="1">1</option>
+                                            <option value="2" selected>2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5+</option>
+                                        </select>
+                                        <label for="adults"><i class="bi bi-person me-2"></i>Adultes</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="children">
+                                            <option value="0" selected>0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4+</option>
+                                        </select>
+                                        <label for="children"><i class="bi bi-emoji-smile me-2"></i>Enfants</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill py-3">
+                                        <i class="bi bi-search me-2"></i>Rechercher des hébergements
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="kitchen-preview position-relative h-100">
+                        <!-- Modern Kitchen Elements -->
+                        <div class="kitchen-island"></div>
+                        <div class="kitchen-stools">
+                            <div class="stool"></div>
+                            <div class="stool"></div>
+                            <div class="stool"></div>
+                            <div class="stool"></div>
+                        </div>
+                        <div class="kitchen-appliances">
+                            <div class="appliance fridge"></div>
+                            <div class="appliance microwave"></div>
+                            <div class="appliance coffee-maker"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
+    <!-- Features Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold text-dark mb-3">Pourquoi choisir HBNB ?</h2>
+                    <p class="lead text-muted">Découvrez ce qui nous rend uniques</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-shield-check text-primary fs-3"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Sécurité garantie</h5>
+                            <p class="card-text text-muted">Tous nos hébergements sont vérifiés et sécurisés pour votre tranquillité d'esprit.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-star text-success fs-3"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Qualité premium</h5>
+                            <p class="card-text text-muted">Des logements soigneusement sélectionnés pour des expériences exceptionnelles.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-headset text-warning fs-3"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Support 24/7</h5>
+                            <p class="card-text text-muted">Notre équipe est disponible à tout moment pour vous accompagner.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>Holberton School - All rights reserved</p>
+    <!-- Popular Destinations -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold text-dark mb-3">Destinations populaires</h2>
+                    <p class="lead text-muted">Découvrez nos destinations les plus appréciées</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="destination-card position-relative rounded-4 overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1502602898534-861b3e3c1bca?w=400&h=300&fit=crop" alt="Paris" class="w-100 h-100 object-fit-cover">
+                        <div class="destination-overlay d-flex align-items-end p-3">
+                            <div class="text-white">
+                                <h6 class="fw-bold mb-1">Paris</h6>
+                                <small class="opacity-75">France</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="destination-card position-relative rounded-4 overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=400&h=300&fit=crop" alt="Tokyo" class="w-100 h-100 object-fit-cover">
+                        <div class="destination-overlay d-flex align-items-end p-3">
+                            <div class="text-white">
+                                <h6 class="fw-bold mb-1">Tokyo</h6>
+                                <small class="opacity-75">Japon</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="destination-card position-relative rounded-4 overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop" alt="New York" class="w-100 h-100 object-fit-cover">
+                        <div class="destination-overlay d-flex align-items-end p-3">
+                            <div class="text-white">
+                                <h6 class="fw-bold mb-1">New York</h6>
+                                <small class="opacity-75">États-Unis</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="destination-card position-relative rounded-4 overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=300&fit=crop" alt="Londres" class="w-100 h-100 object-fit-cover">
+                        <div class="destination-overlay d-flex align-items-end p-3">
+                            <div class="text-white">
+                                <h6 class="fw-bold mb-1">Londres</h6>
+                                <small class="opacity-75">Royaume-Uni</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">HBNB</h5>
+                    <p class="text-muted">Découvrez des hébergements extraordinaires et des expériences uniques partout dans le monde.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Découvrir</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Destinations</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Expériences</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Hébergements</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Aventures</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Centre d'aide</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Sécurité</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Assistance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Entreprise</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">À propos</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Carrières</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Presse</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Légal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Conditions</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Confidentialité</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Cookies</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2025 HBNB. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png" alt="Google" height="20" class="me-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png" alt="PayPal" height="20" class="me-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" height="20">
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/modern-scripts.js"></script>
 </body>
 </html>
