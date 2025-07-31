@@ -43,10 +43,9 @@ header {
 
 .logo {
     background-image: url('../images/logo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 120px;
-    height: 40px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 .hero-banner {
