@@ -55,36 +55,39 @@
             <button id="search-btn">Search</button>
         </section>
 
-        <section class="places">
-            <div class="hero-image">
-                <img src="doc_images/img_index.png" alt="Nice place to rent">
-            </div>
+       <section class="places">
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1>Available Places</h1>
+            <label for="max-price"><strong>Max Price:</strong></label>
+            <select id="max-price">
+                <option value="all">All</option>
+                <option value="100">$100</option>
+                <option value="150">$150</option>
+                <option value="200">$200</option>
+            </select>
+        </div>
+    </div>
 
-            <h1>Places</h1>
-            <div id="places-list" class="places-container">
-                <!-- Places will be loaded dynamically -->
-                <article class="place-card template" style="display: none;">
-                    <div class="price_by_night">$99</div>
-                    <h2>Place Name</h2>
-                    <div class="information">
-                        <div class="max_guest">
-                            <img src="images/icon_wifi.png" alt="image du wifi">
-                        </div>
-                        <div class="number_rooms">
-                            <img src="images/icon_bed.png" alt="iamge sommeil">
-                        </div>
-                        <div class="number_bathrooms">
-                            <img src="images/icon_bath.png" alt="image salle de bain">
-                        </div>
-                    </div>
-                    <div class="user"><strong>Owner:</strong> John Doe</div>
-                    <div class="description">
-                        Beautiful apartment with amazing views...
-                    </div>
-                    <button class="details-button">View Details</button>
-                </article>
-            </div>
-        </section>
+    <div id="places-list" class="places-container">
+        <article class="place-card">
+            <h2>Beautiful Beach House</h2>
+            <p>Price per night: $150</p>
+            <button class="details-button">View Details</button>
+        </article>
+        <article class="place-card">
+            <h2>Cozy Cabin</h2>
+            <p>Price per night: $100</p>
+            <button class="details-button">View Details</button>
+        </article>
+        <article class="place-card">
+            <h2>Modern Apartment</h2>
+            <p>Price per night: $200</p>
+            <button class="details-button">View Details</button>
+        </article>
+    </div>
+</section>
+
     </div>
 
     <footer>
